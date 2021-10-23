@@ -27,7 +27,10 @@ dependencies:
   arkit_plugin: ^1.0.5
   meta: ^1.7.0
   http: ^0.13.4
-
+  shared_preferences: ^0.5.3+1
+  provider: ^4.3.3
+  flutter_dotenv: ^5.0.2
+  google_fonts: ^2.1.0
 
 
 
@@ -54,6 +57,7 @@ flutter:
   assets:
     - assets/fox_face_mesh_texture.png
     - assets/green_check_mesh_texture.png
+    - .env
 
 
 

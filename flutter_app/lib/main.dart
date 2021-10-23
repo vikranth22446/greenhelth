@@ -1,6 +1,10 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
+import 'package:green_helth/Screens/auth_screen.dart';
 import 'package:green_helth/Screens/badge_detection_screen.dart';
+import 'package:green_helth/Screens/home_screen.dart';
+import 'package:green_helth/Services/Auth.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,12 +34,22 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("GreenHelth"),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(value: Auth()),
+      ],
+      child: MaterialApp(
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSwatch(
+            primaryColorDark: Color.fromRGBO(167, 223, 76, 1),
+            accentColor: Color.fromRGBO(255, 255, 250, 1),
+          ),
         ),
-        body: BadgeDetectionScreen(),
+        home: AuthScreen(),
+        routes: {
+          "auth_screen": (ctx) => AuthScreen(),
+          "home": (ctx) => HomeScreen(),
+        },
       ),
     );
   }
