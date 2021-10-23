@@ -1,0 +1,9 @@
+{
+  "exclude": [
+    "/static/node_modules/",
+    "**/*.spec.ts",
+    "./node_modules",
+    "../../node_modules/*",
+    "../src/*.ts*"
+  ]
+}

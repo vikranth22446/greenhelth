@@ -1,0 +1,22 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "loose": true,
+        "modules": false
+      }
+    ],
+    "@babel/react"
+  ],
+  "plugins": [
+    "@babel/transform-runtime",
+    "react-html-attrs",
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
+      }
+    ]
+  ]
+}

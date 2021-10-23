@@ -1,0 +1,174 @@
+#header {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    color: #b6b6b6;
+    background: #333333;
+    border-bottom: 1px solid transparent;
+    text-align: center;
+    /*font-family: Arial, sans-serif;*/
+    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;;
+    font-size: 16px;
+
+}
+
+#mainLogoLoading {
+    text-align: center;
+}
+
+#welcomeAnimation {
+    text-align: center;
+    font-size: 64px;
+    margin-bottom: 80px;
+}
+
+#welcomeSpan {
+    color: #148a99;
+}
+
+.parent {
+    /*display: inline;*/
+    text-align: center;
+}
+
+.miniLogo {
+    width: 80px;
+    height: 80px;
+    margin-right: 120px;
+}
+
+.left {
+    display: inline-block;
+    padding-top: 16px;
+    /*vertical-align: middle;*/
+    vertical-align: text-top;
+}
+
+.right {
+    display: inline-block;
+    /*vertical-align: middle;*/
+    vertical-align: text-top;
+    padding-top: 16px;
+    width: 240px;
+    wrap-option: nowrap;
+    text-align: left;
+
+}
+
+.miniLogoTitle {
+    font-weight: bolder;
+}
+
+.mainButtonStyle {
+    padding: 12px 28px;
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    border-radius: 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 16px auto 0;
+    cursor: pointer;
+    display: block;
+    /*display: table-cell;*/
+}
+
+.rightArrow {
+    float: right;
+}
+
+
+.mainHorizontalButtons {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    margin-left: 16px;
+    vertical-align: middle;
+    margin-right: 16px;
+    margin-top: 10%;
+
+}
+
+.third {
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+.menuMainIcon {
+    width: 100px;
+    height: 100px;
+    round-clip: 1px;
+}
+
+.mainIconText {
+    width: 200px;
+    /*height: 40px;*/
+}
+
+.leftHomeIcon {
+    float: left;
+    margin-left: 16px;
+    font-size: 16px;
+}
+
+.createNewDataForm {
+    color: black;
+    font-size: 16px;
+}
+
+/*.parent > div {*/
+/*font-size: 16px;*/
+/*flex: 1;*/
+/*}*/
+
+body {
+    color: #eeeeee;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+/* Animation */
+
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0, 40px, 0)
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0, 40px, 0)
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1
+    }
+}
+
+
+.animated {
+    animation-duration: 1.5s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+    opacity: 0
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
+

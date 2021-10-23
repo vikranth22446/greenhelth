@@ -1,0 +1,65 @@
+{
+  "name": "apxeio",
+  "version": "0.0.1",
+  "description": "Frontend for APXEIO",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron main.js",
+    "live": "./node_modules/.bin/parcel watch src/index.jsx -d public/build",
+    "build": "./node_modules/.bin/parcel build src/index.jsx -d public/build"
+  },
+  "author": "Vikranth Srivatsa",
+  "repository": {
+    "type": "git"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "parcel-bundler": "^1.12.3",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-react-html-attrs": "^2.1.0",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.3",
+    "prettier": "^1.15.3"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.1",
+    "@babel/polyfill": "^7.2.5",
+    "@material-ui/core": "^4.8.3",
+    "@types/react": "^16.9.17",
+    "chokidar": "^3.3.1",
+    "electron-prebuilt": "^1.4.13",
+    "electron-reload": "^1.5.0",
+    "material-ui": "^0.20.2",
+    "parcel-bundler": "^1.11.0",
+    "parcel-plugin-compress": "^1.0.9",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
+    "react-animations": "^1.0.0",
+    "react-dom": "^16.12.0",
+    "react-hook-form": "^4.5.6",
+    "react-router-dom": "^5.1.2",
+    "react-transition-group": "^4.3.0",
+    "reactjs-popup": "^1.5.0",
+    "reactstrap": "^8.4.0"
+  },
+  "compress": {
+    "gzip": {
+      "zlib": true
+    }
+  },
+  "exclude": [
+    "/static/node_modules/",
+    "**/*.spec.ts",
+    "./node_modules",
+    "../node_modules/*",
+    "../src/*.ts*"
+  ]
+}
