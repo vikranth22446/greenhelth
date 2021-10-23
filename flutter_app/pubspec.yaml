@@ -26,6 +26,7 @@ dependencies:
   arcore_flutter_plugin: ^0.0.11
   arkit_plugin: ^1.0.5
   meta: ^1.7.0
+  http: ^0.13.4
 
 
 

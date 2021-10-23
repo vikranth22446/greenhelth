@@ -15,7 +15,7 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
   ARKitNode? rightEye;
 
   @override
-  void dispose() {
+  void dispose() async {
     arkitController.dispose();
     super.dispose();
   }
