@@ -28,9 +28,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
-    return new AugmentedFacesScreen();
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("GreenHelth"),
+        ),
+        body: BadgeDetectionScreen(),
+      ),
+    );
   }
 }
