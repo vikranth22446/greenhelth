@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="theme-color" content="#000000"/>
+    <link rel="shortcut icon" href=""/>
+    <title>GreenHelth</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='build/index.css') }}">
+</head>
+
+<style>
+    body {
+        background-color: #222222;
+    }
+
+
+</style>
+
+<body>
+{#    {{ hostname }}#}
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root"></div>
+<script src="{{ url_for('static',filename='build/index.js') }}"></script>
+</body>
+
+</html>

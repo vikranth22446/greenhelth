@@ -1,0 +1,4 @@
+venv/
+__pycache__
+face_id_with_keras/weights/
+*.db
