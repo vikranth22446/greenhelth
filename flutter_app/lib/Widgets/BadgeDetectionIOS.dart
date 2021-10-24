@@ -76,8 +76,10 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
     );
     anchor.geometry.materials.value = [material];
 
-    node = ARKitNode(name: "face node", geometry: anchor.geometry);
-    nameNode = drawText("Loading", node!.position);
+    setState(() {
+      node = ARKitNode(name: "face node", geometry: anchor.geometry);
+      nameNode = drawText("Loading", node!.position);
+    });
 
     arkitController.add(nameNode!, parentNodeName: anchor.nodeName);
     arkitController.add(node!, parentNodeName: anchor.nodeName);
@@ -103,7 +105,9 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
             ),
           ],
         );
-        nameNode!.position = node!.position;
+        setState(() {
+          nameNode!.position = node!.position;
+        });
       } else {
         arkitController.update(
           node!.name,
@@ -115,8 +119,9 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
             ),
           ],
         );
-        nameNode!.position = node!.position;
-      }
+        setState(() {
+          nameNode!.position = node!.position;
+        });      }
       arkitController.updateFaceGeometry(node!, anchor.identifier);
     }
   }
