@@ -21,7 +21,9 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) { 
+    print("we made it");
+    return Scaffold(
     appBar: AppBar(title: const Text('Face Detection Sample')),
     body: Container(
       child: ARKitSceneView(
@@ -29,18 +31,23 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
         onARKitViewCreated: onARKitViewCreated,
       ),
     ),
-  );
+  ); 
+  }
 
   void onARKitViewCreated(ARKitController arkitController) {
     this.arkitController = arkitController;
     this.arkitController.onAddNodeForAnchor = _handleAddAnchor;
     this.arkitController.onUpdateNodeForAnchor = _handleUpdateAnchor;
+    this.arkitController.updateAtTime = (time) { print("at a time"); };
   }
 
   void _handleAddAnchor(ARKitAnchor anchor) {
     if (!(anchor is ARKitFaceAnchor)) {
       return;
     }
+
+    print("here");
+
     final material = ARKitMaterial(fillMode: ARKitFillMode.lines);
     anchor.geometry.materials.value = [material];
 
@@ -76,6 +83,8 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
           faceAnchor.blendShapes['eyeBlink_L'] ?? 0);
       _updateEye(rightEye!, faceAnchor.rightEyeTransform,
           faceAnchor.blendShapes['eyeBlink_R'] ?? 0);
+
+      print("ohhhhh there");
     }
   }
 
