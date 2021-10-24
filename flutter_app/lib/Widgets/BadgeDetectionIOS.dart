@@ -32,20 +32,6 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
   }
 
   @override
-<<<<<<< HEAD
-  Widget build(BuildContext context) { 
-    print("we made it");
-    return Scaffold(
-    appBar: AppBar(title: const Text('Face Detection Sample')),
-    body: Container(
-      child: ARKitSceneView(
-        configuration: ARKitConfiguration.faceTracking,
-        onARKitViewCreated: onARKitViewCreated,
-      ),
-    ),
-  ); 
-  }
-=======
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(title: const Text('Face Detection Sample')),
         body: Container(
@@ -55,15 +41,11 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
           ),
         ),
       );
->>>>>>> 0214e474857b5bae596fa1d08c9c6d6ab6c3b098
 
   void onARKitViewCreated(ARKitController arkitController) {
     this.arkitController = arkitController;
     this.arkitController.onAddNodeForAnchor = _handleAddAnchor;
     this.arkitController.onUpdateNodeForAnchor = _handleUpdateAnchor;
-<<<<<<< HEAD
-    this.arkitController.updateAtTime = (time) { print("at a time"); };
-=======
 
     this.arkitController.updateAtTime = (time) {
       if ((frameNumber - frameLastDetected).abs() > 10) {
@@ -76,24 +58,12 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
         frameNumber = (frameNumber + 1) % 1000000;
       });
     };
->>>>>>> 0214e474857b5bae596fa1d08c9c6d6ab6c3b098
   }
 
   void _handleAddAnchor(ARKitAnchor anchor) {
     if (!(anchor is ARKitFaceAnchor)) {
       return;
     }
-<<<<<<< HEAD
-
-    print("here");
-
-    final material = ARKitMaterial(fillMode: ARKitFillMode.lines);
-    anchor.geometry.materials.value = [material];
-
-    node = ARKitNode(geometry: anchor.geometry);
-    arkitController.add(node!, parentNodeName: anchor.nodeName);
-=======
->>>>>>> 0214e474857b5bae596fa1d08c9c6d6ab6c3b098
 
     setState(() {
       frameLastDetected = frameNumber;
@@ -148,15 +118,6 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
         nameNode!.position = node!.position;
       }
       arkitController.updateFaceGeometry(node!, anchor.identifier);
-<<<<<<< HEAD
-      _updateEye(leftEye!, faceAnchor.leftEyeTransform,
-          faceAnchor.blendShapes['eyeBlink_L'] ?? 0);
-      _updateEye(rightEye!, faceAnchor.rightEyeTransform,
-          faceAnchor.blendShapes['eyeBlink_R'] ?? 0);
-
-      print("ohhhhh there");
-=======
->>>>>>> 0214e474857b5bae596fa1d08c9c6d6ab6c3b098
     }
   }
 
