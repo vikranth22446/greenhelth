@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:green_helth/Screens/auth_screen.dart';
 import 'package:green_helth/Screens/badge_detection_screen.dart';
 import 'package:green_helth/Screens/home_screen.dart';
+import 'package:green_helth/Screens/tabs_screen.dart';
 import 'package:green_helth/Services/Auth.dart';
 import 'package:provider/provider.dart';
 
@@ -41,14 +42,14 @@ class _MyHomePageState extends State<MyHomePage> {
       child: MaterialApp(
         theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch(
-            primaryColorDark: Color.fromRGBO(167, 223, 76, 1),
+            primaryColorDark: Color.fromRGBO(11, 192, 127, 1),
             accentColor: Color.fromRGBO(255, 255, 250, 1),
           ),
         ),
         home: AuthScreen(),
         routes: {
           "auth_screen": (ctx) => AuthScreen(),
-          "home": (ctx) => HomeScreen(),
+          "home": (ctx) => TabsScreen(),
         },
       ),
     );

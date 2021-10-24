@@ -92,6 +92,7 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         color: Color.fromRGBO(255, 255, 250, 1),
         child: Padding(
@@ -105,10 +106,17 @@ class _AuthScreenState extends State<AuthScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Text("Logo"),
+                    SizedBox(
+                      height: 60,
+                      width: 60,
+                      child: Image.asset(
+                          'assets/Textures/green_logo_mesh_texture.png',
+                          fit: BoxFit.fitWidth),
+                    ),
                     Text(
                       "GRENHLTH",
                       style: GoogleFonts.poppins(
-                        fontSize: 50,
+                        fontSize: 40,
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).colorScheme.primaryVariant,
                       ),
