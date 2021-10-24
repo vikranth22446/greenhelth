@@ -81,8 +81,8 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
       nameNode = drawText("Loading", node!.position);
     });
 
-    arkitController.add(nameNode!, parentNodeName: anchor.nodeName);
     arkitController.add(node!, parentNodeName: anchor.nodeName);
+    arkitController.add(nameNode!, parentNodeName: anchor.nodeName);
   }
 
   void _handleUpdateAnchor(ARKitAnchor anchor) {
@@ -105,11 +105,14 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
             ),
           ],
         );
-        setState(() {
-          const scale = 0.001;
-          final vectorScale = vector.Vector3(scale, scale, scale);
-          nameNode?.position = node!.position + vectorScale;
-        });
+        arkitController.update(
+          nameNode!.name,
+          materials: [
+            ARKitMaterial(
+              diffuse: ARKitMaterialProperty.color(Colors.black),
+            ),
+          ],
+        );
       } else {
         arkitController.update(
           node!.name,
@@ -121,14 +124,15 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
             ),
           ],
         );
-        setState(() {
-          const scale = 1.0;
-          final vectorScale = vector.Vector3(scale, scale, scale);
-          nameNode?.position = node!.position + vectorScale;
-        });
+        arkitController.update(
+          nameNode!.name,
+          materials: [
+            ARKitMaterial(
+              diffuse: ARKitMaterialProperty.color(Colors.black),
+            ),
+          ],
+        );
       }
-
-      print(nameNode?.position);
       arkitController.updateFaceGeometry(node!, anchor.identifier);
     }
   }
