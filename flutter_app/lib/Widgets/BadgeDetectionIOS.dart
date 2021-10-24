@@ -106,7 +106,9 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
           ],
         );
         setState(() {
-          nameNode!.position = node!.position;
+          const scale = 0.001;
+          final vectorScale = vector.Vector3(scale, scale, scale);
+          nameNode?.position = node!.position + vectorScale;
         });
       } else {
         arkitController.update(
@@ -120,8 +122,13 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
           ],
         );
         setState(() {
-          nameNode!.position = node!.position;
-        });      }
+          const scale = 1.0;
+          final vectorScale = vector.Vector3(scale, scale, scale);
+          nameNode?.position = node!.position + vectorScale;
+        });
+      }
+
+      print(nameNode?.position);
       arkitController.updateFaceGeometry(node!, anchor.identifier);
     }
   }
