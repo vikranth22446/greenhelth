@@ -30,14 +30,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Map<BadgeLevel, String> badgeRemarks = {
     BadgeLevel.GreenBadge: "You're good to go on campus!",
-    BadgeLevel.YellowBadge: "Make sure to fill out the clearance survey!",
-    BadgeLevel.RedBadge: "Please do not come on campus, and stay safe!",
+    BadgeLevel.YellowBadge: "Fill out the clearance survey!",
+    BadgeLevel.RedBadge: "Please social distance!",
   };
 
   Map<BadgeLevel, Color> badgeColors = {
     BadgeLevel.GreenBadge: Color.fromRGBO(11, 192, 127, 1),
     BadgeLevel.YellowBadge: Color.fromRGBO(245, 224, 34, 1),
-    BadgeLevel.RedBadge: Color.fromRGBO(255, 255, 255, 1),
+    BadgeLevel.RedBadge: Color.fromRGBO(242, 48, 118, 1),
   };
 
   @override
@@ -140,6 +140,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            Text(
+              "Today's Identifications",
+              style: GoogleFonts.poppins(
+                  fontSize: 13,
+                  color: Colors.grey,
+                  fontStyle: FontStyle.italic
+              ),
+            ),
+            SizedBox(height: 10,),
             Column(
               children: [
                 for (var s in feed)
