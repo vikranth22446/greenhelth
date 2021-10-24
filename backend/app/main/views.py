@@ -94,3 +94,22 @@ def identify_face():
         db.session.add(history_obj)
     db.session.commit()
     return jsonify({"msg": "success", "usernames": usernames, "green_badge_approved": green_badges_detected})
+
+def dump_datetime(value):
+    """Deserialize datetime object into string form for JSON processing."""
+    if value is None:
+        return None
+    return [value.strftime("%Y-%m-%d"), value.strftime("%H:%M:%S")]
+
+@main.route("/get_history", methods=["GET", "POST"])
+def get_history():
+    all_history = History.query.all()
+    results = []
+    status = []
+    for history in all_history:
+        detected_time = history.detected_time
+        new_datetime = dump_datetime(detected_time)
+        history_status = history.status
+        status.append(history_status)
+        results.append(new_datetime)
+    return jsonify({"results": results, "status": status})
