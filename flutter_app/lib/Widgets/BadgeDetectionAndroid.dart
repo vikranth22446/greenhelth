@@ -27,11 +27,11 @@ class _BadgeDetectionAndroidState extends State<BadgeDetectionAndroid> {
 
   loadMesh() async {
     final ByteData textureBytes =
-    await rootBundle.load('assets/Textures/green_check_mesh_texture.png');
+    await rootBundle.load('assets/Textures/green_logo_mesh_texture.png');
 
     arCoreFaceController.loadMesh(
         textureBytes: textureBytes.buffer.asUint8List(),
-        skin3DModelFilename: 'green_check.sfb');
+        skin3DModelFilename: 'green_logo.sfb');
   }
 
   @override

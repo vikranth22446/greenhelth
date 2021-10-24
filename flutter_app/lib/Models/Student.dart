@@ -10,6 +10,7 @@ class Student {
   String name;
   String email;
   BadgeLevel badgeLevel;
+  DateTime lastUpdated;
 
-  Student({required this.studentID, required this.name, required this.email, required this.badgeLevel});
+  Student({required this.studentID, required this.name, required this.email, required this.badgeLevel, required this.lastUpdated});
 }
