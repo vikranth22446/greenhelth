@@ -112,4 +112,4 @@ def get_history():
         history_status = history.status
         status.append(history_status)
         results.append(new_datetime)
-    return jsonify({"results": results, "status": status})
+    return jsonify({"times": results, "status": status})

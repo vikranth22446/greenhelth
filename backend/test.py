@@ -1,22 +1,26 @@
 import requests
 import time
+
+endpoint = "20.83.127.0:3000"
+# endpoint = "localhost:3000"
+
 with open('test_images/daniel_won_test2.jpg', 'rb') as f:
     start_time = time.time()
 
-    r = requests.post("http://20.83.127.0:3000/identify_face", files={'image': f.read()})
+    r = requests.post(f"http://{endpoint}/identify_face", files={'image': f.read()})
     print(r.json())
     print(time.time() - start_time)
 
 with open('test_images/obama.jpeg', 'rb') as f:
     start_time = time.time()
 
-    r = requests.post("http://20.83.127.0:3000/identify_face", files={'image': f.read()})
+    r = requests.post(f"http://{endpoint}/identify_face",  files={'image': f.read()})
     print(r.json())
     print(time.time() - start_time)
 
 with open('test_images/random_guy.jpeg', 'rb') as f:
     start_time = time.time()
-    r = requests.post("http://20.83.127.0:3000/identify_face", files={'image': f.read()})
+    r = requests.post(f"http://{endpoint}/identify_face", files={'image': f.read()})
     print(r.json())
     print(time.time() - start_time)
 
