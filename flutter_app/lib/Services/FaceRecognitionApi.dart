@@ -1,5 +1,7 @@
 //@dart=2.9
 
+import 'dart:async';
+
 import 'package:flutter/painting.dart';
 import 'package:green_helth/Models/Student.dart';
 import 'package:http/http.dart' as http;
@@ -13,6 +15,7 @@ class FaceRecognitionApi {
     //     Uri.parse(API_URL),
     //     body: json.encode({})
     // );
+    await Future.delayed(const Duration(seconds: 2), (){});
     return Student(studentID: "studentID", name: "name", email: "email", badgeLevel: BadgeLevel.GreenBadge, lastUpdated: DateTime.now());
   }
 
