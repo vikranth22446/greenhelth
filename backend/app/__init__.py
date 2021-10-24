@@ -7,12 +7,26 @@ import os
 
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-
 from app.config import config, Config
-
 db = SQLAlchemy()
 logger = logging.getLogger(__name__)
 
+from app.models.user import User
+
+def load_initial_users(db):
+    images = ["Obama.jpg", "Meng.jpg", "Joe.jpg", "Jennifer.jpg"]
+    for image in images:
+        user1 = User(photo_name=image, green_badge=False, student_name=image[:-3], email=image[:-3] + "@berkeley.edu", major=image[:-3], student_details="Student loves being " + image[:-3])
+        db.session.add(user1)
+        db.session.commit()
+
+    user1 = User(photo_name="yousef.jpg", green_badge=True, student_name="yousef", email="yousef@berkeley.edu", major="eecs", student_details="Student loves being " + "yousef")
+    db.session.add(user1)
+    db.session.commit()
+
+    user2 = User(photo_name="daniel_won.jpg", green_badge=True, student_name="daniel_won", email="daniel_won@berkeley.edu", major="eecs", student_details="Student loves being " + "daniel_won")
+    db.session.add(user2)
+    db.session.commit()
 
 def create_app(config_name=None, db_ref=None) -> Flask:
     if not config_name:
@@ -27,6 +41,10 @@ def create_app(config_name=None, db_ref=None) -> Flask:
     else:
         db_ref.init_app(app)
         db_ref.reflect(app=app)
+    with app.app_context():
+        db.create_all()
+        if len(User.query.all()) == 0:
+            load_initial_users(db)
     configure_blueprints(app, app_config)
     configure_hook(app, config)
     configure_error_handlers(app)

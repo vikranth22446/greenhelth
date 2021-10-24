@@ -1,5 +1,6 @@
+*.pyc
 venv/
-__pycache__
+**/__pycache__
 face_id_with_keras/weights/
 *.db
 *.env

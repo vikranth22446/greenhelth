@@ -1,8 +1,36 @@
 import requests
-with open('app/images/Obama.jpg', 'rb') as f:
-    r = requests.post("http://127.0.0.1:8080/identify_face", files={'image': f.read()})
-    print(r)
+import time
+
+endpoint = "20.83.127.0:3000"
+# endpoint = "localhost:3000"
+
+with open('test_images/daniel_won_test2.jpg', 'rb') as f:
+    start_time = time.time()
+
+    r = requests.post(f"http://{endpoint}/identify_face", files={'image': f.read()})
     print(r.json())
+    print(time.time() - start_time)
+
+with open('test_images/obama.jpeg', 'rb') as f:
+    start_time = time.time()
+
+    r = requests.post(f"http://{endpoint}/identify_face",  files={'image': f.read()})
+    print(r.json())
+    print(time.time() - start_time)
+
+with open('test_images/random_guy.jpeg', 'rb') as f:
+    start_time = time.time()
+    r = requests.post(f"http://{endpoint}/identify_face", files={'image': f.read()})
+    print(r.json())
+    print(time.time() - start_time)
+
+with open('test_images/yousef2.jpg', 'rb') as f:
+    start_time = time.time()
+
+    r = requests.post("http://20.83.127.0:3000/identify_face", files={'image': f.read()})
+    print(r.json())
+    print(time.time() - start_time)
+
 
 # import face_recognition
 # known_image = face_recognition.load_image_file("obama.jpeg")
