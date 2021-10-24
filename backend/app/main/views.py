@@ -1,4 +1,5 @@
 from flask import render_template, request, jsonify
+from flask.globals import current_app
 from app.main import main
 from app import db
 from PIL import Image
@@ -7,15 +8,17 @@ import numpy as np
 import glob
 import os
 import time
+from app.models.user import History
 # from face_id.predict import build_database_dict, recognize_face, detector_cv2, model
 import face_recognition
-
+from app.models.user import User
 @main.route("/")
 @main.route("/<path:path>")
 def home(path=None):
     return render_template("index.html")
 
-@main.route("/upload_photo/<str:image_name>", methods=["GET", "POST"])
+database_names, database_encodings = None, None
+@main.route("/upload_photo/<string:image_name>", methods=["GET", "POST"])
 def upload_photo(image_name):
     """
     Catch all home view used to render the react code. This is rendered server side to allow
@@ -30,24 +33,32 @@ def upload_photo(image_name):
 
     print("Rebuilding face database")
     global database_names, database_encodings 
-    database_names, database_encodings = build_database_dict()
+    database_names, database_encodings = build_database_dict("app/images/")
 
 # Second, build a database containing embeddings for all images
 def build_database_dict(image_folder):
     database_names = []
     database_encodings = []
-    for file in glob.glob(f"{image_folder}/*"):
-        print("Adding file to database", file)
-        database_name = os.path.splitext(os.path.basename(file))[0]
-
-        known_image = face_recognition.load_image_file(file)
+    users = User.query.all()
+    for user in users:
+        photo_name = user.photo_name
+        full_path = os.path.join(image_folder, photo_name)
+        print(full_path, user.student_name)
+    
+        known_image = face_recognition.load_image_file(full_path)
         image_encoding = face_recognition.face_encodings(known_image)[0]
 
         database_encodings.append(image_encoding)
-        database_names.append(database_name)
+        database_names.append(photo_name)
     return np.array(database_names), database_encodings
 
-database_names, database_encodings = build_database_dict("app/images/")
+# database_names, database_encodings = build_database_dict("app/images/")
+@main.route("/initialize_db", methods=["GET", "POST"])
+def initialize_db():
+    global database_names, database_encodings 
+    database_names, database_encodings = build_database_dict("app/images")
+    return jsonify({"status": 200, "names": [name for name in database_names]})
+
 @main.route("/identify_face", methods=["GET", "POST"])
 def identify_face():
     """
@@ -55,6 +66,9 @@ def identify_face():
     for other configurations such as csrf tokens, etc.
     :return: the rendered template
     """
+    global database_names, database_encodings 
+    if database_encodings is None:
+        database_names, database_encodings = build_database_dict("app/images")
     print("Identifying Face")
     start_time = time.time()
     file = request.files["image"]
@@ -63,8 +77,20 @@ def identify_face():
     face_locations = face_recognition.face_locations(img)
     uploaded_image_encoding = face_recognition.face_encodings(img, face_locations)
     results = face_recognition.compare_faces(np.array(database_encodings), uploaded_image_encoding)
-    print(results, database_names)
+    # distances = face_recognition.face_distance(np.array(database_encodings), uploaded_image_encoding)
+    # photo_based_on_distance = database_names[np.argmin(distances)]
+    # print(photo_based_on_distance)
+
     photos_detected = database_names[np.array(results)]
-    print(photos_detected)
-    print(time.time() - start_time)
-    return jsonify({"msg": "success", "photo_name": str(photos_detected)})
+    green_badges_detected = []
+    users = []
+    usernames = []
+    for photo in photos_detected:
+        item = User.query.filter_by(photo_name=photo).first()
+        users.append(users)
+        usernames.append(item.student_name)
+        green_badges_detected.append(item.green_badge)
+        history_obj = History(student_id=item.student_id, status=item.green_badge)
+        db.session.add(history_obj)
+    db.session.commit()
+    return jsonify({"msg": "success", "usernames": usernames, "green_badge_approved": green_badges_detected})

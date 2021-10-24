@@ -1,6 +1,6 @@
 import requests
-with open('app/images/Obama.jpg', 'rb') as f:
-    r = requests.post("http://127.0.0.1:8080/identify_face", files={'image': f.read()})
+with open('test_images/daniel_won_test2.jpg', 'rb') as f:
+    r = requests.post("http://localhost:8080/identify_face", files={'image': f.read()})
     print(r)
     print(r.json())
 
