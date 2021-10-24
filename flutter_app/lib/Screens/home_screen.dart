@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Dashbord",
+                  "Dashboard",
                   style: GoogleFonts.poppins(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
                     width: 100.0,
@@ -88,8 +88,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 6,),
+                      SizedBox(
+                        height: 6,
+                      ),
                       Text(
                         "Your COVID compliance status is: ",
                         style: GoogleFonts.poppins(
@@ -102,10 +105,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           Text(
                             badgeIdentifiers[currentBadgeLevel]!,
                             style: GoogleFonts.poppins(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: badgeColors[currentBadgeLevel]!
-                            ),
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: badgeColors[currentBadgeLevel]!),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -132,7 +134,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 30,),
+            SizedBox(
+              height: 30,
+            ),
             Text(
               "Feed",
               style: GoogleFonts.poppins(
@@ -145,10 +149,11 @@ class _HomeScreenState extends State<HomeScreen> {
               style: GoogleFonts.poppins(
                   fontSize: 13,
                   color: Colors.grey,
-                  fontStyle: FontStyle.italic
-              ),
+                  fontStyle: FontStyle.italic),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Column(
               children: [
                 for (var s in feed)

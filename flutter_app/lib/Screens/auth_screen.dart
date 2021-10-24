@@ -114,10 +114,10 @@ class _AuthScreenState extends State<AuthScreen> {
                           fit: BoxFit.fitWidth),
                     ),
                     Text(
-                      "GRENHLTH",
+                      "RETURNAR",
                       style: GoogleFonts.poppins(
                         fontSize: 40,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w800,
                         color: Theme.of(context).colorScheme.primaryVariant,
                       ),
                     ),
@@ -144,7 +144,8 @@ class _AuthScreenState extends State<AuthScreen> {
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                              color: Theme.of(context).colorScheme.primaryVariant,
+                              color:
+                                  Theme.of(context).colorScheme.primaryVariant,
                               width: 2.0),
                         ),
                         enabledBorder: OutlineInputBorder(
@@ -165,7 +166,8 @@ class _AuthScreenState extends State<AuthScreen> {
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                              color: Theme.of(context).colorScheme.primaryVariant,
+                              color:
+                                  Theme.of(context).colorScheme.primaryVariant,
                               width: 2.0),
                         ),
                         enabledBorder: OutlineInputBorder(
@@ -188,8 +190,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               padding: const EdgeInsets.symmetric(vertical: 15),
                               child: isLoading
                                   ? CircularProgressIndicator(
-                                      color: Colors.white
-                                    )
+                                      color: Colors.white)
                                   : Text(
                                       authMode == AuthMode.Login
                                           ? "LOG IN"
@@ -201,8 +202,9 @@ class _AuthScreenState extends State<AuthScreen> {
                               submit();
                             },
                             style: ElevatedButton.styleFrom(
-                                primary:
-                                    Theme.of(context).colorScheme.primaryVariant,
+                                primary: Theme.of(context)
+                                    .colorScheme
+                                    .primaryVariant,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(32.0),
                                 ),
@@ -237,7 +239,8 @@ class _AuthScreenState extends State<AuthScreen> {
                         style: GoogleFonts.poppins(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color: Theme.of(context).colorScheme.primaryVariant),
+                            color:
+                                Theme.of(context).colorScheme.primaryVariant),
                       ),
                     ),
                   ],

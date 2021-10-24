@@ -33,7 +33,7 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(title: const Text('Face Detection Sample')),
+        // appBar: AppBar(title: const Text('Face Detection Sample')),
         body: Container(
           child: ARKitSceneView(
             configuration: ARKitConfiguration.faceTracking,
@@ -100,6 +100,7 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
           node!.name,
           materials: [
             ARKitMaterial(
+              fillMode: ARKitFillMode.lines,
               lightingModelName: ARKitLightingModel.physicallyBased,
               diffuse: ARKitMaterialProperty.color(Colors.grey),
             ),
@@ -118,6 +119,7 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
           node!.name,
           materials: [
             ARKitMaterial(
+              fillMode: ARKitFillMode.lines,
               lightingModelName: ARKitLightingModel.physicallyBased,
               diffuse: ARKitMaterialProperty.color(
                   badgeColors[currentStudent.badgeLevel]!),
@@ -128,7 +130,8 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
           nameNode!.name,
           materials: [
             ARKitMaterial(
-              diffuse: ARKitMaterialProperty.color(Colors.black),
+              diffuse: ARKitMaterialProperty.color(
+                  badgeColors[currentStudent.badgeLevel]!),
             ),
           ],
         );
@@ -158,20 +161,19 @@ class _BadgeDetectionIOSState extends State<BadgeDetectionIOS> {
       extrusionDepth: 1,
       materials: [
         ARKitMaterial(
-          diffuse: ARKitMaterialProperty.color(Colors.black),
+          diffuse: ARKitMaterialProperty.color(Colors.red),
         )
       ],
     );
-    const scale = 0.001;
+    const scale = 0.075;
     final vectorScale = vector.Vector3(scale, scale, scale);
     final textNode = ARKitNode(
-      name: "name node",
+      // name: "name node",
       geometry: textGeometry,
-      position: point,
+      position: vector.Vector3(-1, 3, -6),
       scale: vectorScale,
     );
 
     return textNode;
   }
-
 }
